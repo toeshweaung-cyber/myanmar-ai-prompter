@@ -3,68 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar AI Prompt Master</title>
+    <title>Burmese AI Prompt Master | Premium Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --bg: #0d0d0d; }
-        body { font-family: sans-serif; background: var(--bg); color: white; padding: 20px; text-align: center; }
-        .box { max-width: 600px; margin: auto; background: #1a1a1e; padding: 25px; border-radius: 20px; border: 1px solid #333; }
-        h1 { color: var(--gold); font-size: 22px; }
-        input, select { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #444; background: #222; color: white; box-sizing: border-box; }
-        button { width: 100%; padding: 18px; background: var(--gold); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 15px; }
-        #output { margin-top: 25px; padding: 20px; background: #000; border: 1px dashed var(--gold); border-radius: 15px; min-height: 60px; word-break: break-all; color: #4ecca3; font-family: monospace; }
+        :root {
+            --primary: #d4af37;
+            --primary-dark: #b8962e;
+            --bg-dark: #08080a;
+            --card-bg: rgba(26, 26, 30, 0.9);
+            --text-main: #f0f0f2;
+            --text-dim: #94949e;
+            --accent: #4ecca3;
+        }
+
+        body {
+            font-family: 'Inter', 'Pyidaungsu', sans-serif;
+            background: radial-gradient(circle at top right, #1a1a2e, var(--bg-dark));
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .header { text-align: center; margin-bottom: 35px; }
+        .header h1 { 
+            font-size: 24px; 
+            font-weight: 800; 
+            margin: 0; 
+            background: linear-gradient(to right, #f2d06b, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        .header p { color: var(--text-dim); font-size: 13px; margin-top: 8px; }
+
+        .form-group { margin-bottom: 22px; }
+        .form-group label { 
+            display: block; 
+            font-size: 12px; 
+            font-weight: 600; 
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        input, select {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 16px;
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .btn-generate {
+            width: 100%;
+            background: linear-gradient(135deg, #f2d06b, #d4af37);
+            color: #000;
+            border: none;
+            border-radius: 14px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-generate:active { transform: scale(0.98); }
+        .btn-generate:hover { box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
+
+        .output-section {
+            margin-top: 40px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #222;
+        }
+
+        #result {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            color: var(--accent);
+            line-height: 1.6;
+            word-break: break-all;
+            margin-bottom: 20px;
+        }
+
+        .btn-copy {
+            background: #222;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s;
+        }
+
+        .btn-copy:hover { background: var(--primary); color: #000; }
+
+        /* Loader Animation */
+        .spinner { display: none; margin: auto; width: 24px; height: 24px; border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #000; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>👑 AI PROMPT MASTER PRO</h1>
-        <p style="font-size:12px; color:#888;">စာကြောင်းလိုက် မြန်မာလို ရိုက်ထည့်ပါ</p>
-        
-        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံမှာ ဆံပင်အရှည်နဲ့ ကောင်မလေး...">
-        
-        <select id="artStyle">
-            <option value="photorealistic, 8k, highly detailed, cinematic lighting">ဓါတ်ပုံအစစ် (Realistic)</option>
-            <option value="anime style, studio ghibli, vibrant colors">အန်နီမေး (Anime)</option>
-        </select>
 
-        <button id="genBtn" onclick="generate()">PROMPT ထုတ်မည် ✨</button>
-        
-        <div id="output">ရလဒ်ကို စောင့်ဆိုင်းနေပါသည်...</div>
-        <button id="copyBtn" style="display:none; background:#333; color:var(--gold); border:1px solid var(--gold);" onclick="copy()">COPY PROMPT 📋</button>
+<div class="container">
+    <div class="header">
+        <h1>AI PROMPT MASTER</h1>
+        <p>Premium Burmese to English AI Generator</p>
     </div>
 
-    <script>
-        async function generate() {
-            const input = document.getElementById('userInput').value;
-            const btn = document.getElementById('genBtn');
-            const out = document.getElementById('output');
+    <div class="form-group">
+        <label>Describe your vision (မြန်မာလို)</label>
+        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံမှာ ထိုင်မသိမ်းဝတ်ထားတဲ့ ကောင်မလေး">
+    </div>
 
-            if(!input) return alert("စာအရင်ရိုက်ပါဗျာ");
+    <div class="grid-layout">
+        <div class="form-group">
+            <label>Art Style</label>
+            <select id="artStyle">
+                <option value="photorealistic, raw photo, 8k resolution, highly detailed">Realistic</option>
+                <option value="anime style, makoto shinkai style, cinematic">Anime</option>
+                <option value="digital illustration, vibrant colors, clean lines">Illustration</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Lighting</label>
+            <select id="lightStyle">
+                <option value="cinematic lighting, rim light">Cinematic</option>
+                <option value="golden hour, soft warm sunlight">Golden Hour</option>
+                <option value="neon noir, glowing cyberpunk lights">Neon Glow</option>
+            </select>
+        </div>
+    </div>
 
-            btn.innerText = "ဘာသာပြန်နေသည်... ⏳";
-            out.innerText = "ခဏစောင့်ပေးပါ...";
+    <div class="grid-layout">
+        <div class="form-group">
+            <label>Camera Shot</label>
+            <select id="camera">
+                <option value="full body shot, standing gracefully">Full Body</option>
+                <option value="close up portrait, focus on eyes">Portrait</option>
+                <option value="bird eye view, aerial shot">Top View</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Ratio</label>
+            <select id="ratio">
+                <option value="--ar 16:9">Widescreen (16:9)</option>
+                <option value="--ar 9:16">Portrait (9:16)</option>
+                <option value="--ar 1:1">Square (1:1)</option>
+            </select>
+        </div>
+    </div>
 
-            try {
-                // Google Translate ကို တိုက်ရိုက်ခေါ်ယူခြင်း
-                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(input)}`);
-                const data = await res.json();
-                const englishText = data[0][0][0];
+    <button class="btn-generate" id="genBtn" onclick="generatePrompt()">
+        <span id="btnText">GENERATE PROMPT</span>
+        <div class="spinner" id="loader"></div>
+    </button>
 
-                const style = document.getElementById('artStyle').value;
-                const final = `${englishText}, ${style}, --ar 16:9`;
+    <div class="output-section">
+        <div id="result">Your masterpiece prompt will appear here...</div>
+        <button class="btn-copy" id="copyBtn" onclick="copy()">COPY TO CLIPBOARD</button>
+    </div>
+</div>
 
-                out.innerText = final;
-                document.getElementById('copyBtn').style.display = 'block';
-            } catch (e) {
-                out.innerText = "Error: အင်တာနက်လိုင်း မကောင်းလို့ပါ။ ပြန်စမ်းကြည့်ပါ။";
-            } finally {
-                btn.innerText = "PROMPT ထုတ်မည် ✨";
-            }
+<script>
+    async function generatePrompt() {
+        const text = document.getElementById('userInput').value;
+        const btnText = document.getElementById('btnText');
+        const loader = document.getElementById('loader');
+        const output = document.getElementById('result');
+
+        if(!text) return alert("ကျေးဇူးပြု၍ စာအရင်ရိုက်ပါဗျာ။");
+
+        btnText.style.display = 'none';
+        loader.style.display = 'block';
+        output.innerText = "Processing your vision...";
+
+        try {
+            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(text)}`);
+            const data = await res.json();
+            const eng = data[0][0][0];
+
+            const style = document.getElementById('artStyle').value;
+            const light = document.getElementById('lightStyle').value;
+            const cam = document.getElementById('camera').value;
+            const ratio = document.getElementById('ratio').value;
+            
+            const final = `${eng}, ${cam}, ${style}, ${light}, unreal engine 5 render, masterpiece, ultra-detailed, 8k resolution, ${ratio}`;
+
+            output.innerText = final;
+            document.getElementById('copyBtn').style.display = 'block';
+        } catch (e) {
+            output.innerText = "Error: Connection lost. Please try again.";
+        } finally {
+            btnText.style.display = 'block';
+            loader.style.display = 'none';
         }
+    }
 
-        function copy() {
-            navigator.clipboard.writeText(document.getElementById('output').innerText);
-            alert("Copy ကူးပြီးပါပြီ!");
-        }
-    </script>
+    function copy() {
+        const text = document.getElementById('result').innerText;
+        navigator.clipboard.writeText(text);
+        const copyBtn = document.getElementById('copyBtn');
+        copyBtn.innerText = "COPIED! ✅";
+        setTimeout(() => { copyBtn.innerText = "COPY TO CLIPBOARD"; }, 2000);
+    }
+</script>
+
 </body>
 </html>
