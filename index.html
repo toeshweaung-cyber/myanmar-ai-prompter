@@ -9,15 +9,14 @@
         :root {
             --primary: #d4af37;
             --bg-dark: #050505;
-            --card-bg: rgba(10, 10, 12, 0.9);
+            --card-bg: rgba(10, 10, 12, 0.92);
             --text-main: #ffffff;
             --text-dim: #b0b0b0;
         }
 
         body {
             font-family: 'Inter', 'Pyidaungsu', sans-serif;
-            /* ပိုသေချာတဲ့ နောက်ခံပုံ Link အသစ် */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
                         url('https://cdn.pixabay.com/photo/2019/11/06/05/29/temple-4605151_1280.jpg');
             background-size: cover;
             background-position: center;
@@ -40,13 +39,31 @@
 
         .header h1 { 
             text-align: center;
-            font-size: 24px; 
+            font-size: 26px; 
             background: linear-gradient(to right, #f2d06b, #d4af37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             font-weight: 800;
         }
+
+        .header p { text-align: center; color: var(--text-dim); font-size: 13px; margin-bottom: 25px; }
+
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+        .feature-item { text-align: center; padding: 10px; }
+        .feature-item i { color: var(--primary); font-size: 18px; display: block; margin-bottom: 5px; }
+        .feature-item span { font-size: 11px; font-weight: 600; color: var(--primary); display: block; text-transform: uppercase; }
+        .feature-item p { font-size: 10px; color: var(--text-dim); margin: 5px 0 0; }
 
         .form-group { margin-bottom: 18px; }
         label { display: block; font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; }
@@ -77,7 +94,7 @@
 
         .about-card {
             max-width: 650px; margin: 30px auto;
-            background: rgba(0, 0, 0, 0.8); border-radius: 25px;
+            background: rgba(0, 0, 0, 0.85); border-radius: 25px;
             padding: 25px; border: 1px solid rgba(212, 175, 55, 0.1); text-align: center;
         }
 
@@ -98,11 +115,31 @@
 <div class="container">
     <div class="header">
         <h1>PROMPT MASTER PRO V2</h1>
+        <p>Premium Burmese AI Generation Suite</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-item">
+            <span>✨ AI Translation</span>
+            <p>မြန်မာစာကို အဆင့်မြင့် အင်္ဂလိပ်စကားလုံးများအဖြစ် ပြောင်းလဲပေးခြင်း။</p>
+        </div>
+        <div class="feature-item">
+            <span>🎨 Pro Styles</span>
+            <option value="">Realistic, Anime မှ Cyberpunk အထိ စုံလင်စွာရွေးနိုင်ခြင်း။</option>
+        </div>
+        <div class="feature-item">
+            <span>📸 Smart Shot</span>
+            <p>Camera Angles နှင့် Lighting များကို Professional ဆန်စွာ ထိန်းချုပ်နိုင်ခြင်း။</p>
+        </div>
+        <div class="feature-item">
+            <span>🚀 8K Output</span>
+            <p>Midjourney နှင့် Kling AI တို့အတွက် အကောင်းဆုံး Quality ရရှိစေခြင်း။</p>
+        </div>
     </div>
 
     <div class="form-group">
         <label>Describe in Burmese (မြန်မာလိုရေးပါ)</label>
-        <input type="text" id="userInput" placeholder="ဥပမာ- ရွှေတိဂုံဘုရားရှေ့မှာ ဆီမီးထွန်းနေတဲ့ မိန်းကလေး">
+        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံဘုရားရှေ့မှာ ဆီမီးထွန်းနေတဲ့ မြန်မာမိန်းကလေး">
     </div>
 
     <div class="grid">
@@ -164,7 +201,7 @@
     <p style="font-size: 12px; color: var(--primary);">📍 ရန်ကင်းမြို့နယ်၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ။</p>
     
     <div class="contact-links">
-        <a href="tel:09255548803" class="contact-btn">📞 09 255548803</a>
+        <a href="tel:09255548803" class="contact-btn">📞 09 25548803</a>
         <a href="mailto:toeshweaung@gmail.com" class="contact-btn">✉️ Gmail</a>
         <a href="https://www.facebook.com/share/1AZ6jvJe97/" target="_blank" class="contact-btn">🔵 Facebook</a>
     </div>
