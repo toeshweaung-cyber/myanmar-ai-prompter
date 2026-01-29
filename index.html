@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myanmar AI Prompt Generator</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: white; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: #16213e; padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        h1 { text-align: center; color: #4ecca3; }
+        label { display: block; margin: 15px 0 5px; color: #bdc3c7; }
+        select, input { width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; }
+        .result-box { background: #0f3460; padding: 15px; border-radius: 10px; border: 1px dashed #4ecca3; margin-top: 20px; min-height: 50px; word-wrap: break-word; }
+        button { width: 100%; padding: 15px; background: #4ecca3; border: none; border-radius: 5px; color: #1a1a2e; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #45b291; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇲🇲 AI Prompt Maker</h1>
+        
+        <label>ဘာပုံထုတ်ချင်တာလဲ? (မြန်မာလိုရေးပါ)</label>
+        <input type="text" id="subject" placeholder="ဥပမာ- ရှမ်းမလေးတစ်ယောက် ရှမ်းဝတ်စုံနှင့်...">
+
+        <label>📸 Camera Angle (ရှုထောင့်)</label>
+        <select id="angle">
+            <option value="Eye level, straight on shot">မျက်လုံးတစ်ဆုံး (Normal View)</option>
+            <option value="Low angle shot, looking up, heroic">အောက်ကနေ အပေါ်မော့ရိုက်ချက် (Low Angle)</option>
+            <option value="High angle, bird's eye view">အပေါ်စီး (High Angle)</option>
+            <option value="Extreme close-up shot">အနီးကပ် (Close-up)</option>
+        </select>
+
+        <label>🎬 Video/Image Ratio (အရွယ်အစား)</label>
+        <select id="ratio">
+            <option value="--ar 16:9">YouTube/Movie (16:9)</option>
+            <option value="--ar 9:16">TikTok/Reels (9:16)</option>
+            <option value="--ar 1:1">Facebook Post (1:1)</option>
+        </select>
+
+        <label>✨ Quality (အရည်အသွေး)</label>
+        <select id="quality">
+            <option value="8k resolution, photorealistic, cinematic lighting, masterpiece">အကောင်းဆုံး (Cinematic Photo)</option>
+            <option value="Anime style, vibrant colors, studio ghibli inspired">Anime ပုံစံ</option>
+            <option value="3D render, Pixar style, C4D, octane render">3D ပုံစံ</option>
+        </select>
+
+        <button onclick="generatePrompt()">Prompt ထုတ်မည် ✨</button>
+
+        <div class="result-box" id="resultText">မိတ်ဆွေရဲ့ Prompt ဒီမှာ ပေါ်လာပါလိမ့်မယ်...</div>
+        <button id="copyBtn" style="background: #34495e; color: white; display: none;" onclick="copyPrompt()">Copy ဆွဲမည် 📋</button>
+    </div>
+
+    <script>
+        function generatePrompt() {
+            const subject = document.getElementById('subject').value || "A beautiful scene";
+            const angle = document.getElementById('angle').value;
+            const ratio = document.getElementById('ratio').value;
+            const quality = document.getElementById('quality').value;
+
+            // ဤနေရာတွင် AI က ဘာသာပြန်ပေးသလိုမျိုး မြန်မာစာကို အင်္ဂလိပ်လို ပြောင်းဖို့ Logic ထည့်ရပါမယ်။ 
+            // လောလောဆယ် ရိုးရိုးပဲ ပြထားပေးပါတယ်။
+            const finalPrompt = `${subject}, ${angle}, ${quality}, ${ratio}`;
+            
+            document.getElementById('resultText').innerText = finalPrompt;
+            document.getElementById('copyBtn').style.display = 'block';
+        }
+
+        function copyPrompt() {
+            const text = document.getElementById('resultText').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Copy ကူးပြီးပါပြီ! AI မှာ သွားသုံးနိုင်ပါပြီ။");
+        }
+    </script>
+</body>
+</html>
