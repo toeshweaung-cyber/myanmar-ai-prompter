@@ -115,6 +115,12 @@
         }
         .contact-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
     </style>
+    <link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 <body>
 
