@@ -3,50 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar AI Prompt Engine</title>
+    <title>Myanmar AI Prompt Master</title>
     <style>
-        body { background: #111; color: #eee; font-family: sans-serif; padding: 20px; }
-        .box { max-width: 500px; margin: auto; background: #222; padding: 20px; border-radius: 15px; border: 1px solid #444; }
-        input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #d4af37; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
-        #out { margin-top: 20px; padding: 15px; background: #000; border: 1px dashed #d4af37; border-radius: 10px; word-break: break-all; }
+        :root { --gold: #d4af37; --bg: #0d0d0d; }
+        body { font-family: sans-serif; background: var(--bg); color: white; padding: 20px; text-align: center; }
+        .box { max-width: 600px; margin: auto; background: #1a1a1e; padding: 25px; border-radius: 20px; border: 1px solid #333; }
+        h1 { color: var(--gold); font-size: 22px; }
+        input, select { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #444; background: #222; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 18px; background: var(--gold); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 15px; }
+        #output { margin-top: 25px; padding: 20px; background: #000; border: 1px dashed var(--gold); border-radius: 15px; min-height: 60px; word-break: break-all; color: #4ecca3; font-family: monospace; }
     </style>
 </head>
 <body>
     <div class="box">
-        <h2 style="color:#d4af37; text-align:center;">AI PROMPT MASTER</h2>
-        <label>မြန်မာလို ရေးပါ (ဥပမာ- ကောင်မလေး)</label>
-        <input type="text" id="inp" placeholder="ရှမ်းမလေး တစ်ယောက် ပုဂံမှာ...">
+        <h1>👑 AI PROMPT MASTER PRO</h1>
+        <p style="font-size:12px; color:#888;">စာကြောင်းလိုက် မြန်မာလို ရိုက်ထည့်ပါ</p>
         
-        <label>ရွေးချယ်ရန်</label>
-        <select id="sty">
-            <option value="photorealistic, 8k resolution, cinematic lighting">ဓါတ်ပုံအစစ် (Realistic)</option>
-            <option value="anime style, vibrant colors, studio ghibli">အန်နီမေး (Anime)</option>
+        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံမှာ ဆံပင်အရှည်နဲ့ ကောင်မလေး...">
+        
+        <select id="artStyle">
+            <option value="photorealistic, 8k, highly detailed, cinematic lighting">ဓါတ်ပုံအစစ် (Realistic)</option>
+            <option value="anime style, studio ghibli, vibrant colors">အန်နီမေး (Anime)</option>
         </select>
 
-        <button onclick="gen()">PROMPT ထုတ်မည် ✨</button>
-        <div id="out">ရလဒ်က ဒီမှာ ပေါ်လာပါမယ်...</div>
+        <button id="genBtn" onclick="generate()">PROMPT ထုတ်မည် ✨</button>
+        
+        <div id="output">ရလဒ်ကို စောင့်ဆိုင်းနေပါသည်...</div>
+        <button id="copyBtn" style="display:none; background:#333; color:var(--gold); border:1px solid var(--gold);" onclick="copy()">COPY PROMPT 📋</button>
     </div>
 
     <script>
-        async function gen() {
-            const txt = document.getElementById('inp').value;
-            if(!txt) return alert("စာအရင်ရိုက်ပါ");
-            document.getElementById('out').innerText = "ဘာသာပြန်နေပါသည်... ⏳";
-            
+        async function generate() {
+            const input = document.getElementById('userInput').value;
+            const btn = document.getElementById('genBtn');
+            const out = document.getElementById('output');
+
+            if(!input) return alert("စာအရင်ရိုက်ပါဗျာ");
+
+            btn.innerText = "ဘာသာပြန်နေသည်... ⏳";
+            out.innerText = "ခဏစောင့်ပေးပါ...";
+
             try {
-                // Google Translate ကို တိုက်ရိုက်ခေါ်သုံးလိုက်တာပါ
-                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(txt)}`);
+                // Google Translate ကို တိုက်ရိုက်ခေါ်ယူခြင်း
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(input)}`);
                 const data = await res.json();
-                const eng = data[0][0][0];
-                
-                const style = document.getElementById('sty').value;
-                document.getElementById('out').innerText = eng + ", " + style + ", --ar 16:9";
+                const englishText = data[0][0][0];
+
+                const style = document.getElementById('artStyle').value;
+                const final = `${englishText}, ${style}, --ar 16:9`;
+
+                out.innerText = final;
+                document.getElementById('copyBtn').style.display = 'block';
             } catch (e) {
-                document.getElementById('out').innerText = "အင်တာနက် လိုင်းမကောင်းလို့ပါ၊ ပြန်စမ်းကြည့်ပါဦး။";
+                out.innerText = "Error: အင်တာနက်လိုင်း မကောင်းလို့ပါ။ ပြန်စမ်းကြည့်ပါ။";
+            } finally {
+                btn.innerText = "PROMPT ထုတ်မည် ✨";
             }
+        }
+
+        function copy() {
+            navigator.clipboard.writeText(document.getElementById('output').innerText);
+            alert("Copy ကူးပြီးပါပြီ!");
         }
     </script>
 </body>
 </html>
-
