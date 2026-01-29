@@ -3,135 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Master | Premium Portfolio</title>
+    <title>AI Prompt Master Pro | Toe Shwe Aung</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #d4af37;
             --bg-dark: #050505;
-            --card-bg: rgba(15, 15, 18, 0.85);
+            --card-bg: rgba(10, 10, 12, 0.9);
             --text-main: #ffffff;
             --text-dim: #b0b0b0;
         }
 
         body {
             font-family: 'Inter', 'Pyidaungsu', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1541014848003-81b498f3b610?q=80&w=2070&auto=format&fit=crop'); /* Bagan Background */
+            /* ပိုသေချာတဲ့ နောက်ခံပုံ Link အသစ် */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://cdn.pixabay.com/photo/2019/11/06/05/29/temple-4605151_1280.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
-            max-width: 600px;
-            margin: 40px auto;
+            max-width: 650px;
+            margin: 20px auto;
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            padding: 30px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
         .header h1 { 
             text-align: center;
-            font-size: 26px; 
+            font-size: 24px; 
             background: linear-gradient(to right, #f2d06b, #d4af37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            font-weight: 800;
         }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 11px; color: var(--primary); font-weight: 800; margin-bottom: 8px; letter-spacing: 1px; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; }
+        
         input, select {
-            width: 100%; background: rgba(255,255,255,0.07); border: 1px solid #333;
-            border-radius: 12px; padding: 15px; color: white; box-sizing: border-box;
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid #333;
+            border-radius: 12px; padding: 14px; color: white; box-sizing: border-box;
+            font-size: 14px; transition: 0.3s;
         }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        input:focus, select:focus { border-color: var(--primary); outline: none; background: rgba(255,255,255,0.1); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
         .btn-main {
-            width: 100%; background: var(--primary); color: #000; border: none;
-            padding: 18px; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 25px;
+            width: 100%; background: linear-gradient(45deg, #d4af37, #f2d06b); color: #000; border: none;
+            padding: 16px; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 20px;
+            font-size: 15px; transition: 0.3s;
         }
+        .btn-main:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(212,175,55,0.4); }
 
         .result-box {
-            margin-top: 30px; background: rgba(0,0,0,0.5); padding: 20px;
-            border-radius: 15px; border-left: 4px solid var(--primary);
-            font-family: monospace; color: #4ecca3; font-size: 14px;
+            margin-top: 25px; background: #000; padding: 20px;
+            border-radius: 15px; border: 1px solid #444;
+            font-family: 'Consolas', monospace; color: #4ecca3; font-size: 13px;
+            word-break: break-all; min-height: 50px;
         }
 
-        /* About Me Section */
         .about-card {
-            max-width: 600px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            text-align: center;
+            max-width: 650px; margin: 30px auto;
+            background: rgba(0, 0, 0, 0.8); border-radius: 25px;
+            padding: 25px; border: 1px solid rgba(212, 175, 55, 0.1); text-align: center;
         }
 
-        .about-card h2 { color: var(--primary); font-size: 20px; margin-bottom: 10px; }
-        .about-card p { color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+        .about-card h2 { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
+        .about-card p { color: var(--text-dim); font-size: 13px; line-height: 1.6; }
 
-        .contact-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .contact-links { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
         .contact-btn {
-            text-decoration: none; color: #000; background: #eee;
-            padding: 10px 18px; border-radius: 50px; font-size: 13px; font-weight: 700;
-            transition: 0.3s;
+            text-decoration: none; color: #fff; background: #222;
+            padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 600;
+            border: 1px solid #444; transition: 0.3s;
         }
-        .contact-btn:hover { background: var(--primary); transform: translateY(-3px); }
-
+        .contact-btn:hover { background: var(--primary); color: #000; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <h1>PROMPT MASTER PRO</h1>
+        <h1>PROMPT MASTER PRO V2</h1>
     </div>
 
     <div class="form-group">
-        <label>YOUR VISION (မြန်မာလို)</label>
-        <input type="text" id="userInput" placeholder="ဥပမာ- ရှမ်းမလေးတစ်ယောက် အင်းလေးကန်မှာ...">
+        <label>Describe in Burmese (မြန်မာလိုရေးပါ)</label>
+        <input type="text" id="userInput" placeholder="ဥပမာ- ရွှေတိဂုံဘုရားရှေ့မှာ ဆီမီးထွန်းနေတဲ့ မိန်းကလေး">
     </div>
 
     <div class="grid">
         <div class="form-group">
-            <label>STYLE</label>
+            <label>Art Style</label>
             <select id="artStyle">
-                <option value="photorealistic, 8k, raw photo">Realistic</option>
-                <option value="anime style, 4k, vibrant">Anime</option>
+                <option value="photorealistic, 8k resolution, raw photo, masterwork">Realistic Photo</option>
+                <option value="studio ghibli style, cinematic anime, lush colors">Anime (Ghibli)</option>
+                <option value="cyberpunk 2077 style, neon city, futuristic">Cyberpunk</option>
+                <option value="3D Pixar style render, cute character, unreal engine 5">Disney/Pixar 3D</option>
+                <option value="vintage oil painting, thick brush strokes, classic">Oil Painting</option>
+                <option value="pencil sketch, hand-drawn, charcoal, artistic">Pencil Sketch</option>
             </select>
         </div>
         <div class="form-group">
-            <label>RATIO</label>
-            <select id="ratio">
-                <option value="--ar 16:9">Widescreen</option>
-                <option value="--ar 9:16">Portrait</option>
+            <label>Lighting</label>
+            <select id="lightStyle">
+                <option value="cinematic lighting, dramatic shadows">Cinematic</option>
+                <option value="golden hour, warm sunset glow">Golden Hour</option>
+                <option value="volumetric fog, ethereal morning rays">Ethereal Fog</option>
+                <option value="neon lights, vibrant glowing colors">Neon Glow</option>
+                <option value="soft studio lighting, professional portrait">Studio Light</option>
             </select>
         </div>
     </div>
 
-    <button class="btn-main" onclick="generate()">GENERATE PROMPT ✨</button>
+    <div class="grid">
+        <div class="form-group">
+            <label>Camera Angle</label>
+            <select id="camera">
+                <option value="full body shot, standing gracefully">Full Body</option>
+                <option value="close-up portrait, detailed facial features">Close-up Portrait</option>
+                <option value="drone shot, aerial view, wide perspective">Drone/Aerial View</option>
+                <option value="low angle shot, looking up, heroic">Low Angle</option>
+                <option value="eye level shot, symmetrical composition">Eye Level</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Aspect Ratio</label>
+            <select id="ratio">
+                <option value="--ar 16:9">YouTube (16:9)</option>
+                <option value="--ar 9:16">TikTok/Reels (9:16)</option>
+                <option value="--ar 1:1">Square (1:1)</option>
+                <option value="--ar 4:5">Instagram (4:5)</option>
+                <option value="--ar 21:9">Ultrawide Movie</option>
+            </select>
+        </div>
+    </div>
 
-    <div class="result-box" id="output">Result will appear here...</div>
+    <button class="btn-main" onclick="generate()">GENERATE MASTER PROMPT ✨</button>
+
+    <div class="result-box" id="output">Final English prompt will appear here...</div>
+    <button id="copyBtn" class="btn-main" style="display:none; background:#222; color:var(--primary); border:1px solid var(--primary);" onclick="copy()">COPY PROMPT 📋</button>
 </div>
 
 <div class="about-card">
     <h2>ABOUT DEVELOPER</h2>
-    <p>မင်္ဂလာပါ! ကျွန်တော်ကတော့ <b>Toe Shwe Aung</b> ပါ။ AI နည်းပညာနဲ့ မြန်မာ့ယဉ်ကျေးမှုကို ပေါင်းစပ်ပေးမယ့် Tool တွေကို ဖန်တီးနေသူတစ်ဦးဖြစ်ပါတယ်။ ညဘက်အိပ်မပျော်လို့ကလိနေတာပါ။သုံးကြည့်ပါ။ </p>
-    <p style="font-size: 12px;">📍 ရန်ကင်းမြို့နယ်၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ။</p>
+    <p>မင်္ဂလာပါ! ကျွန်တော်ကတော့ <b>Toe Shwe Aung</b> ပါ။ AI နည်းပညာနဲ့ မြန်မာ့ယဉ်ကျေးမှုကို ပေါင်းစပ်ပေးမယ့် Tool တွေကို ဖန်တီးနေသူတစ်ဦးဖြစ်ပါတယ်။ ညဘက်အိပ်မပျော်လို့ ကလိနေတာပါ။ သုံးကြည့်ပါ။</p>
+    <p style="font-size: 12px; color: var(--primary);">📍 ရန်ကင်းမြို့နယ်၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ။</p>
     
     <div class="contact-links">
-        <a href="tel:09255548803" class="contact-btn">📞 09 25548803</a>
+        <a href="tel:09255548803" class="contact-btn">📞 09 255548803</a>
         <a href="mailto:toeshweaung@gmail.com" class="contact-btn">✉️ Gmail</a>
         <a href="https://www.facebook.com/share/1AZ6jvJe97/" target="_blank" class="contact-btn">🔵 Facebook</a>
     </div>
@@ -141,9 +174,10 @@
     async function generate() {
         const input = document.getElementById('userInput').value;
         const out = document.getElementById('output');
+        const cpBtn = document.getElementById('copyBtn');
         if(!input) return alert("စာအရင်ရိုက်ပါ");
 
-        out.innerText = "Translating and processing...";
+        out.innerText = "Processing Magic...";
 
         try {
             const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(input)}`);
@@ -151,12 +185,23 @@
             const eng = data[0][0][0];
 
             const style = document.getElementById('artStyle').value;
+            const light = document.getElementById('lightStyle').value;
+            const cam = document.getElementById('camera').value;
             const ratio = document.getElementById('ratio').value;
             
-            out.innerText = `${eng}, ${style}, ultra detailed, masterpiece, 8k, ${ratio}`;
+            const final = `${eng}, ${cam}, ${style}, ${light}, high-quality detailed render, masterpiece, 8k resolution, ${ratio}`;
+
+            out.innerText = final;
+            cpBtn.style.display = 'block';
         } catch (e) {
-            out.innerText = "Connection error. Try again.";
+            out.innerText = "Error: Please check your internet connection.";
         }
+    }
+
+    function copy() {
+        const text = document.getElementById('output').innerText;
+        navigator.clipboard.writeText(text);
+        alert("Prompt ကူးပြီးပါပြီ! AI စက်တွေမှာ သွားသုံးနိုင်ပါပြီ။");
     }
 </script>
 
