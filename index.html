@@ -3,141 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar Ultimate AI Prompt Master</title>
+    <title>Myanmar AI Prompt Engine</title>
     <style>
-        :root { --gold: #d4af37; --bg: #0d0d0d; --card: #1a1a1e; --accent: #4ecca3; }
-        body { font-family: 'Pyidaungsu', 'Segoe UI', sans-serif; background: var(--bg); color: #e0e0e0; padding: 15px; margin: 0; }
-        .wrapper { max-width: 800px; margin: 20px auto; background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid #333; box-shadow: 0 15px 40px rgba(0,0,0,0.9); }
-        h1 { text-align: center; color: var(--gold); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
-        .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 30px; }
-        
-        .section-label { color: var(--gold); font-size: 12px; font-weight: bold; margin: 20px 0 8px; display: block; border-left: 3px solid var(--gold); padding-left: 10px; }
-        input, select { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #333; background: #252529; color: white; box-sizing: border-box; font-size: 16px; margin-bottom: 10px; }
-        input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 10px rgba(212,175,55,0.2); }
-
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        .generate-btn { width: 100%; padding: 20px; background: linear-gradient(45deg, #d4af37, #f2d06b); border: none; border-radius: 15px; color: #000; font-weight: 800; cursor: pointer; font-size: 18px; margin-top: 30px; transition: 0.3s; }
-        .generate-btn:hover { transform: scale(1.01); box-shadow: 0 0 25px rgba(212,175,55,0.5); }
-
-        .output-container { margin-top: 35px; background: #000; border-radius: 18px; padding: 25px; border: 1px solid #444; }
-        .output-header { color: var(--accent); font-size: 11px; font-weight: bold; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        #finalPrompt { font-family: 'Consolas', monospace; font-size: 14px; line-height: 1.6; color: #ddd; word-break: break-word; }
-        
-        .copy-btn { margin-top: 20px; background: transparent; color: var(--gold); border: 2px solid var(--gold); padding: 12px; border-radius: 10px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.3s; }
-        .copy-btn:hover { background: var(--gold); color: #000; }
+        body { background: #111; color: #eee; font-family: sans-serif; padding: 20px; }
+        .box { max-width: 500px; margin: auto; background: #222; padding: 20px; border-radius: 15px; border: 1px solid #444; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #d4af37; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        #out { margin-top: 20px; padding: 15px; background: #000; border: 1px dashed #d4af37; border-radius: 10px; word-break: break-all; }
     </style>
 </head>
 <body>
+    <div class="box">
+        <h2 style="color:#d4af37; text-align:center;">AI PROMPT MASTER</h2>
+        <label>မြန်မာလို ရေးပါ (ဥပမာ- ကောင်မလေး)</label>
+        <input type="text" id="inp" placeholder="ရှမ်းမလေး တစ်ယောက် ပုဂံမှာ...">
+        
+        <label>ရွေးချယ်ရန်</label>
+        <select id="sty">
+            <option value="photorealistic, 8k resolution, cinematic lighting">ဓါတ်ပုံအစစ် (Realistic)</option>
+            <option value="anime style, vibrant colors, studio ghibli">အန်နီမေး (Anime)</option>
+        </select>
 
-<div class="wrapper">
-    <h1>👑 AI Prompt Master</h1>
-    <p class="subtitle">Premium Myanmar-to-English AI Art Tool</p>
-
-    <span class="section-label">အဓိကအကြောင်းအရာ (ဥပမာ - ပုဂံမှာ ထိုင်မသိမ်းဝတ်ထားတဲ့ မိန်းကလေး)</span>
-    <input type="text" id="userInput" placeholder="မြန်မာလို စိတ်ကြိုက်ရေးပါ...">
-
-    <div class="grid-2">
-        <div>
-            <span class="section-label">🎨 Art Style</span>
-            <select id="artStyle">
-                <option value="Hyper-realistic, photorealistic, 8k, raw color, highly detailed texture">Realistic (ဓါတ်ပုံအစစ်)</option>
-                <option value="Makoto Shinkai anime style, beautiful clouds, cinematic anime">Anime (အန်နီမေး)</option>
-                <option value="Cyberpunk 2077 aesthetic, neon city, futuristic atmosphere">Cyberpunk (အနာဂတ်)</option>
-                <option value="Fantasy oil painting, thick brushwork, magical atmosphere">Fantasy Oil (မှော်ဆန်သောပန်းချီ)</option>
-                <option value="3D Pixar style render, C4D, cute character design">3D Render (Pixar ပုံစံ)</option>
-            </select>
-        </div>
-        <div>
-            <span class="section-label">💡 Lighting</span>
-            <select id="lightStyle">
-                <option value="soft golden hour sunlight, warm glow">Golden Hour (နေဝင်ချိန်)</option>
-                <option value="dramatic cinematic lighting, volumetric rays">Cinematic (ရုပ်ရှင်အလင်း)</option>
-                <option value="soft studio lighting, portrait photography style">Studio Light (စတူဒီယို)</option>
-                <option value="mystical moonlight, cool tones, deep shadows">Moonlight (လရောင်ခြည်)</option>
-            </select>
-        </div>
+        <button onclick="gen()">PROMPT ထုတ်မည် ✨</button>
+        <div id="out">ရလဒ်က ဒီမှာ ပေါ်လာပါမယ်...</div>
     </div>
 
-    <div class="grid-2">
-        <div>
-            <span class="section-label">📸 Camera Angle</span>
-            <select id="camera">
-                <option value="Full body shot, standing elegantly">တစ်ကိုယ်လုံး (Full Body)</option>
-                <option value="Upper body portrait, sharp focus on eyes">တစ်ကိုယ်စာ (Portrait)</option>
-                <option value="Low angle heroic shot, looking up">အောက်ကနေအပေါ်မော့ (Low Angle)</option>
-                <option value="Extreme close-up macro shot, intricate details">အနီးကပ် (Close-up)</option>
-            </select>
-        </div>
-        <div>
-            <span class="section-label">📐 Aspect Ratio</span>
-            <select id="ratio">
-                <option value="--ar 16:9">YouTube (16:9)</option>
-                <option value="--ar 9:16">TikTok/Reels (9:16)</option>
-                <option value="--ar 1:1">Square (1:1)</option>
-                <option value="--ar 4:5">Instagram (4:5)</option>
-            </select>
-        </div>
-    </div>
-
-    <button class="generate-btn" onclick="buildPrompt()">PROMPT ထုတ်မည် ✨</button>
-
-    <div class="output-container">
-        <div class="output-header">FINAL PROMPT FOR AI <span>PRO VERSION</span></div>
-        <div id="finalPrompt">အပေါ်က အကွက်များကို ဖြည့်ပြီး ခလုတ်နှိပ်ပါ...</div>
-        <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyText()">COPY TO CLIPBOARD 📋</button>
-    </div>
-</div>
-
-<script>
-const megaDict = {
-    "မိန်းကလေး": "beautiful Burmese woman", "ကောင်မလေး": "pretty Myanmar girl",
-    "ယောက်ျားလေး": "handsome Burmese man", "ဝတ်စုံ": "traditional Myanmar attire",
-    "ထိုင်မသိမ်း": "royal Burmese Htaimeithein (traditional court dress)", 
-    "ရင်ဖုံး": "traditional Burmese Yinfone blouse", "ပုဆိုး": "Burmese silk Longyi",
-    "ပုဂံ": "ancient Bagan pagodas and temples at background",
-    "ရွှေတိဂုံ": "Shwedagon Golden Pagoda background",
-    "အင်းလေး": "Inle Lake with leg-rowers background",
-    "မန္တလေး": "Mandalay Palace background",
-    "ရှမ်း": "Shan ethnic traditional", "ကချင်": "Kachin ethnic Manau style",
-    "ကရင်": "Kayin ethnic traditional", "မွန်": "Mon ethnic traditional",
-    "နဂါး": "mythical Burmese Naga dragon", "ကိန္နရီ": "mythical Kinnari (half-human half-bird)",
-    "ဆိုင်းဝိုင်း": "traditional Burmese Saing Waing orchestra",
-    "ထီး": "handmade Pathein umbrella", "ကြာ": "Lotus flowers",
-    "ထိုင်": "gracefully sitting", "က": "performing traditional dance",
-    "ပြုံး": "smiling charmingly", "ရွာ": "traditional Burmese village"
-};
-
-function buildPrompt() {
-    let input = document.getElementById('userInput').value || "A serene Myanmar landscape";
-    
-    // Translation Logic
-    for (let key in megaDict) {
-        let regex = new RegExp(key, 'g');
-        input = input.replace(regex, megaDict[key]);
-    }
-
-    const style = document.getElementById('artStyle').value;
-    const light = document.getElementById('lightStyle').value;
-    const cam = document.getElementById('camera').value;
-    const ratio = document.getElementById('ratio').value;
-    
-    const techSpecs = "unreal engine 5 render, octane render, raytraced, intricate embroidery, high quality textures, sharp focus";
-
-    const result = `${input}, ${cam}, ${style}, ${light}, ${techSpecs}, ${ratio}`;
-    
-    document.getElementById('finalPrompt').innerText = result;
-    document.getElementById('copyBtn').style.display = 'block';
-}
-
-function copyText() {
-    const text = document.getElementById('finalPrompt').innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Copy ကူးပြီးပါပြီ! AI စက်တွေမှာ သွားသုံးလို့ရပါပြီ။");
-    });
-}
-</script>
-
+    <script>
+        async function gen() {
+            const txt = document.getElementById('inp').value;
+            if(!txt) return alert("စာအရင်ရိုက်ပါ");
+            document.getElementById('out').innerText = "ဘာသာပြန်နေပါသည်... ⏳";
+            
+            try {
+                // Google Translate ကို တိုက်ရိုက်ခေါ်သုံးလိုက်တာပါ
+                const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(txt)}`);
+                const data = await res.json();
+                const eng = data[0][0][0];
+                
+                const style = document.getElementById('sty').value;
+                document.getElementById('out').innerText = eng + ", " + style + ", --ar 16:9";
+            } catch (e) {
+                document.getElementById('out').innerText = "အင်တာနက် လိုင်းမကောင်းလို့ပါ၊ ပြန်စမ်းကြည့်ပါဦး။";
+            }
+        }
+    </script>
 </body>
 </html>
 
