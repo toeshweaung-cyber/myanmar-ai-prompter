@@ -2,112 +2,118 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI Prompt Master Pro | Toe Shwe Aung</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #d4af37;
             --bg-dark: #050505;
-            --card-bg: rgba(10, 10, 12, 0.92);
+            --card-bg: rgba(10, 10, 12, 0.93);
             --text-main: #ffffff;
             --text-dim: #b0b0b0;
         }
 
         body {
             font-family: 'Inter', 'Pyidaungsu', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
-                        url('https://cdn.pixabay.com/photo/2019/11/06/05/29/temple-4605151_1280.jpg');
+            /* သမီးလေးပုံကို Background အဖြစ် ထည့်သွင်းထားခြင်း */
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), 
+                        url('https://i.ibb.co/7Jx8FvWg/MVIMG-20251211-143921.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 650px;
+            width: 100%;
+            max-width: 550px;
             margin: 20px auto;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 28px;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            box-sizing: border-box;
         }
 
+        .header { text-align: center; margin-bottom: 25px; }
         .header h1 { 
-            text-align: center;
-            font-size: 26px; 
+            font-size: 24px; 
+            font-weight: 800;
             background: linear-gradient(to right, #f2d06b, #d4af37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            font-weight: 800;
+            margin: 0;
+            letter-spacing: 1px;
         }
 
-        .header p { text-align: center; color: var(--text-dim); font-size: 13px; margin-bottom: 25px; }
-
-        /* --- Features Section --- */
+        /* Capabilities Grid */
         .features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding: 15px;
-            background: rgba(255,255,255,0.03);
+            gap: 12px;
+            margin-bottom: 25px;
+            background: rgba(255,255,255,0.04);
             border-radius: 20px;
+            padding: 15px;
             border: 1px solid rgba(212,175,55,0.1);
         }
-        .feature-item { text-align: center; padding: 10px; }
-        .feature-item i { color: var(--primary); font-size: 18px; display: block; margin-bottom: 5px; }
-        .feature-item span { font-size: 11px; font-weight: 600; color: var(--primary); display: block; text-transform: uppercase; }
-        .feature-item p { font-size: 10px; color: var(--text-dim); margin: 5px 0 0; }
+        .feature-item { text-align: center; }
+        .feature-item span { font-size: 11px; font-weight: 800; color: var(--primary); display: block; margin-bottom: 4px; }
+        .feature-item p { font-size: 10px; color: var(--text-dim); margin: 0; line-height: 1.4; }
 
         .form-group { margin-bottom: 18px; }
-        label { display: block; font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; }
+        label { display: block; font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         input, select {
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid #333;
+            width: 100%; background: rgba(255,255,255,0.07); border: 1px solid #333;
             border-radius: 12px; padding: 14px; color: white; box-sizing: border-box;
-            font-size: 14px; transition: 0.3s;
+            font-size: 15px; transition: 0.3s;
         }
+        input:focus, select:focus { border-color: var(--primary); outline: none; background: rgba(255,255,255,0.12); }
 
-        input:focus, select:focus { border-color: var(--primary); outline: none; background: rgba(255,255,255,0.1); }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
         .btn-main {
             width: 100%; background: linear-gradient(45deg, #d4af37, #f2d06b); color: #000; border: none;
-            padding: 16px; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 20px;
-            font-size: 15px; transition: 0.3s;
+            padding: 18px; border-radius: 14px; font-weight: 800; cursor: pointer; margin-top: 20px;
+            font-size: 16px; transition: 0.3s;
         }
-        .btn-main:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(212,175,55,0.4); }
+        .btn-main:active { transform: scale(0.97); }
 
         .result-box {
-            margin-top: 25px; background: #000; padding: 20px;
-            border-radius: 15px; border: 1px solid #444;
+            margin-top: 25px; background: rgba(0,0,0,0.6); padding: 20px;
+            border-radius: 18px; border: 1px solid #333;
             font-family: 'Consolas', monospace; color: #4ecca3; font-size: 13px;
-            word-break: break-all; min-height: 50px;
+            word-break: break-all; min-height: 45px; line-height: 1.6;
         }
 
+        /* About Section */
         .about-card {
-            max-width: 650px; margin: 30px auto;
+            width: 100%; max-width: 550px; margin: 20px auto 50px;
             background: rgba(0, 0, 0, 0.85); border-radius: 25px;
-            padding: 25px; border: 1px solid rgba(212, 175, 55, 0.1); text-align: center;
+            padding: 25px; border: 1px solid rgba(212, 175, 55, 0.15); text-align: center;
+            box-sizing: border-box;
         }
+        .about-card h2 { color: var(--primary); font-size: 18px; margin-top: 0; }
+        .about-card p { color: var(--text-dim); font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
 
-        .about-card h2 { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
-        .about-card p { color: var(--text-dim); font-size: 13px; line-height: 1.6; }
-
-        .contact-links { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .contact-btn {
             text-decoration: none; color: #fff; background: #222;
-            padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 600;
+            padding: 10px 16px; border-radius: 50px; font-size: 12px; font-weight: 600;
             border: 1px solid #444; transition: 0.3s;
         }
-        .contact-btn:hover { background: var(--primary); color: #000; }
+        .contact-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
     </style>
 </head>
 <body>
@@ -115,76 +121,72 @@
 <div class="container">
     <div class="header">
         <h1>PROMPT MASTER PRO V2</h1>
-        <p>Premium Burmese AI Generation Suite</p>
+        <p style="font-size: 12px; color: #999; margin-top: 5px;">Created for Quality AI Generation</p>
     </div>
 
     <div class="features-grid">
         <div class="feature-item">
-            <span>✨ AI Translation</span>
-            <p>မြန်မာစာကို အဆင့်မြင့် အင်္ဂလိပ်စကားလုံးများအဖြစ် ပြောင်းလဲပေးခြင်း။</p>
+            <span>✨ AI TRANSLATION</span>
+            <p>မြန်မာစာကို အင်္ဂလိပ်လို ပြောင်းလဲပေးခြင်း</p>
         </div>
         <div class="feature-item">
-            <span>🎨 Pro Styles</span>
-            <option value="">Realistic, Anime မှ Cyberpunk အထိ စုံလင်စွာရွေးနိုင်ခြင်း။</option>
+            <span>🎨 PRO STYLES</span>
+            <p>Realistic မှ Cyberpunk အထိ စုံလင်စွာရွေးနိုင်ခြင်း</p>
         </div>
         <div class="feature-item">
-            <span>📸 Smart Shot</span>
-            <p>Camera Angles နှင့် Lighting များကို Professional ဆန်စွာ ထိန်းချုပ်နိုင်ခြင်း။</p>
+            <span>📸 SMART SHOT</span>
+            <p>Angles နှင့် Lighting ကို စိတ်ကြိုက်ထိန်းချုပ်ခြင်း</p>
         </div>
         <div class="feature-item">
-            <span>🚀 8K Output</span>
-            <p>Midjourney နှင့် Kling AI တို့အတွက် အကောင်းဆုံး Quality ရရှိစေခြင်း။</p>
+            <span>🚀 8K OUTPUT</span>
+            <p>Quality အမြင့်ဆုံး ရလဒ်များ ရရှိစေခြင်း</p>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Describe in Burmese (မြန်မာလိုရေးပါ)</label>
-        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံဘုရားရှေ့မှာ ဆီမီးထွန်းနေတဲ့ မြန်မာမိန်းကလေး">
+        <label>Describe Your Vision (မြန်မာလို)</label>
+        <input type="text" id="userInput" placeholder="ဥပမာ- ပုဂံမှာ ဆီမီးထွန်းနေတဲ့ မိန်းကလေး">
     </div>
 
     <div class="grid">
         <div class="form-group">
             <label>Art Style</label>
             <select id="artStyle">
-                <option value="photorealistic, 8k resolution, raw photo, masterwork">Realistic Photo</option>
-                <option value="studio ghibli style, cinematic anime, lush colors">Anime (Ghibli)</option>
-                <option value="cyberpunk 2077 style, neon city, futuristic">Cyberpunk</option>
-                <option value="3D Pixar style render, cute character, unreal engine 5">Disney/Pixar 3D</option>
-                <option value="vintage oil painting, thick brush strokes, classic">Oil Painting</option>
-                <option value="pencil sketch, hand-drawn, charcoal, artistic">Pencil Sketch</option>
+                <option value="photorealistic, 8k, raw photo, masterwork">Realistic Photo</option>
+                <option value="studio ghibli style, cinematic anime">Anime</option>
+                <option value="cyberpunk city style, neon">Cyberpunk</option>
+                <option value="3D Pixar style, unreal engine 5">3D Render</option>
+                <option value="oil painting, classic brush strokes">Oil Painting</option>
             </select>
         </div>
         <div class="form-group">
             <label>Lighting</label>
             <select id="lightStyle">
                 <option value="cinematic lighting, dramatic shadows">Cinematic</option>
-                <option value="golden hour, warm sunset glow">Golden Hour</option>
-                <option value="volumetric fog, ethereal morning rays">Ethereal Fog</option>
-                <option value="neon lights, vibrant glowing colors">Neon Glow</option>
-                <option value="soft studio lighting, professional portrait">Studio Light</option>
+                <option value="golden hour, warm sunset">Golden Hour</option>
+                <option value="neon glow, vibrant colors">Neon Glow</option>
+                <option value="soft studio lighting">Studio Light</option>
             </select>
         </div>
     </div>
 
     <div class="grid">
         <div class="form-group">
-            <label>Camera Angle</label>
+            <label>Camera Shot</label>
             <select id="camera">
-                <option value="full body shot, standing gracefully">Full Body</option>
-                <option value="close-up portrait, detailed facial features">Close-up Portrait</option>
-                <option value="drone shot, aerial view, wide perspective">Drone/Aerial View</option>
-                <option value="low angle shot, looking up, heroic">Low Angle</option>
-                <option value="eye level shot, symmetrical composition">Eye Level</option>
+                <option value="full body shot, standing elegantly">Full Body</option>
+                <option value="close up portrait, detailed face">Portrait</option>
+                <option value="drone shot, aerial view">Aerial View</option>
+                <option value="low angle shot, heroic">Low Angle</option>
             </select>
         </div>
         <div class="form-group">
             <label>Aspect Ratio</label>
             <select id="ratio">
-                <option value="--ar 16:9">YouTube (16:9)</option>
-                <option value="--ar 9:16">TikTok/Reels (9:16)</option>
+                <option value="--ar 16:9">Widescreen (16:9)</option>
+                <option value="--ar 9:16">Mobile (9:16)</option>
                 <option value="--ar 1:1">Square (1:1)</option>
                 <option value="--ar 4:5">Instagram (4:5)</option>
-                <option value="--ar 21:9">Ultrawide Movie</option>
             </select>
         </div>
     </div>
@@ -192,16 +194,16 @@
     <button class="btn-main" onclick="generate()">GENERATE MASTER PROMPT ✨</button>
 
     <div class="result-box" id="output">Final English prompt will appear here...</div>
-    <button id="copyBtn" class="btn-main" style="display:none; background:#222; color:var(--primary); border:1px solid var(--primary);" onclick="copy()">COPY PROMPT 📋</button>
+    <button id="copyBtn" class="btn-main" style="display:none; background:#111; color:var(--primary); border:1px solid var(--primary);" onclick="copy()">COPY PROMPT 📋</button>
 </div>
 
 <div class="about-card">
     <h2>ABOUT DEVELOPER</h2>
-    <p>မင်္ဂလာပါ! ကျွန်တော်ကတော့ <b>Toe Shwe Aung</b> ပါ။ AI နည်းပညာနဲ့ မြန်မာ့ယဉ်ကျေးမှုကို ပေါင်းစပ်ပေးမယ့် Tool တွေကို ဖန်တီးနေသူတစ်ဦးဖြစ်ပါတယ်။ ညဘက်အိပ်မပျော်လို့ ကလိနေတာပါ။ သုံးကြည့်ပါ။</p>
-    <p style="font-size: 12px; color: var(--primary);">📍 ရန်ကင်းမြို့နယ်၊ ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ။</p>
+    <p>မင်္ဂလာပါ! ကျွန်တော်ကတော့ <b>Toe Shwe Aung</b> ပါ။ AI နည်းပညာနဲ့ မြန်မာ့ယဉ်ကျေးမှုကို ပေါင်းစပ်ပေးမယ့် Tool တွေကို ဖန်တီးနေသူပါ။ ညဘက်အိပ်မပျော်လို့ ကလိနေတာပါ။ သုံးကြည့်ပါ။</p>
+    <p style="font-size: 11px; color: var(--primary); margin-bottom: 15px;">📍 ရန်ကင်းမြို့နယ်၊ ရန်ကုန်မြို့။</p>
     
     <div class="contact-links">
-        <a href="tel:09255548803" class="contact-btn">📞 09 25548803</a>
+        <a href="tel:09255548803" class="contact-btn">📞 Call</a>
         <a href="mailto:toeshweaung@gmail.com" class="contact-btn">✉️ Gmail</a>
         <a href="https://www.facebook.com/share/1AZ6jvJe97/" target="_blank" class="contact-btn">🔵 Facebook</a>
     </div>
@@ -213,8 +215,8 @@
         const out = document.getElementById('output');
         const cpBtn = document.getElementById('copyBtn');
         if(!input) return alert("စာအရင်ရိုက်ပါ");
-
-        out.innerText = "Processing Magic...";
+        
+        out.innerText = "Processing Your Request...";
 
         try {
             const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=my&tl=en&dt=t&q=${encodeURI(input)}`);
@@ -226,19 +228,17 @@
             const cam = document.getElementById('camera').value;
             const ratio = document.getElementById('ratio').value;
             
-            const final = `${eng}, ${cam}, ${style}, ${light}, high-quality detailed render, masterpiece, 8k resolution, ${ratio}`;
-
-            out.innerText = final;
+            out.innerText = `${eng}, ${cam}, ${style}, ${light}, masterpiece, 8k resolution, ultra detailed, ${ratio}`;
             cpBtn.style.display = 'block';
         } catch (e) {
-            out.innerText = "Error: Please check your internet connection.";
+            out.innerText = "Connection Error. Please try again.";
         }
     }
 
     function copy() {
         const text = document.getElementById('output').innerText;
         navigator.clipboard.writeText(text);
-        alert("Prompt ကူးပြီးပါပြီ! AI စက်တွေမှာ သွားသုံးနိုင်ပါပြီ။");
+        alert("Prompt copied successfully!");
     }
 </script>
 
