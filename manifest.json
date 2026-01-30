@@ -2,7 +2,7 @@
   "name": "AI Prompt Master Pro",
   "short_name": "PromptPro",
   "description": "Premium Burmese AI Prompt Generator",
-  "start_url": "index.html",
+  "start_url": "/myanmar-ai-prompter/",
   "display": "standalone",
   "background_color": "#050505",
   "theme_color": "#d4af37",
