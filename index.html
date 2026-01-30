@@ -115,12 +115,17 @@
         }
         .contact-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
     </style>
-    <link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
+        <link rel="manifest" href="manifest.json">
+    
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW Registered'))
+            .catch(err => console.log('SW Error', err));
+        });
+      }
+    </script>
 </head>
 <body>
 
